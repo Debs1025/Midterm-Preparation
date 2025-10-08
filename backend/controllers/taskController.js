@@ -1,12 +1,12 @@
+const { createTaskValidator, updateTaskValidator } = require('../validators/taskValidator');
+const Task = require('../models/taskModel');
+
 const {
   createTaskService,
   updateTaskService,
   deleteTaskService
 } = require('../services/taskService');
-const { createTaskValidator, updateTaskValidator } = require('../validators/taskValidator');
-const Task = require('../models/taskModel');
 
-// ✅ Create a new task
 async function createTaskController(req, res) {
   const { error } = createTaskValidator(req.body);
   if (error) {
@@ -33,7 +33,7 @@ async function createTaskController(req, res) {
   }
 }
 
-// ✅ Get all tasks
+
 async function getAllTasksController(req, res) {
   try {
     const tasks = await Task.find();
@@ -51,7 +51,7 @@ async function getAllTasksController(req, res) {
   }
 }
 
-// ✅ Update a task
+
 async function updateTaskController(req, res) {
   const { error } = updateTaskValidator(req.body);
   if (error) {
@@ -77,7 +77,7 @@ async function updateTaskController(req, res) {
   }
 }
 
-// ✅ Delete a task
+
 async function deleteTaskController(req, res) {
   try {
     const result = await deleteTaskService(req.params.id);
